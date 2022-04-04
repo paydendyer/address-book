@@ -1,3 +1,4 @@
+/* Hides div until jQuery is activated */
 #show-contact {
   display: none;
 }
