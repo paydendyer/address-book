@@ -53,9 +53,22 @@ function displayContactDetails(addressBookToDisplay) {
   });
   contactsList.html(htmlForContactInfo);
 }
+//Show Contact Detail
+function showContact(contactId) {
+  const contact = addressBook.findContact(contactId);
+  $("#show-contact").show();
+  $(".first-name").html(contact.firstName);
+  $(".last-name").html(contact.lastName);
+  $(".phone-number").html(contact.phoneNumber);
+  let buttons = $("#buttons");
+  buttons.empty();
+  buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
+}
+
+//Display details when <li> is clicked
 function attachContactListeners() {
   $("ul#contacts").on("click", "li", function() { //call jQuery on() method
-    console.log("The id of this <li> is " + this.id + ".");
+    showContact(this.id);
   });
 }
 //Add form submission event listener and gather form input
