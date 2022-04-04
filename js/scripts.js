@@ -70,6 +70,12 @@ function attachContactListeners() {
   $("ul#contacts").on("click", "li", function() { //call jQuery on() method
     showContact(this.id);
   });
+  //Delete Contact When Clicked
+  $("#buttons").on("click", ".deleteButton", function() {
+    addressBook.deleteContact(this.id);
+    $("#show-contact").hide();
+    displayContactDetails(addressBook);
+  });
 }
 //Add form submission event listener and gather form input
 $(document).ready(function() {
