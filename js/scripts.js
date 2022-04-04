@@ -43,14 +43,26 @@ Contact.prototype.fullName = function() {
 //Create a new AddressBook object
 let addressBook = new AddressBook();
 
+//Display details of Contacts
+function displayContactDetails(addressBookToDisplay) {
+  let contactsList = $("ul#contacts");
+  let htmlForContactInfo = "";
+  Object.keys(addressBookToDisplay.contacts).forEach(function(key) { //gets all keys
+    const contact = addressBookToDisplay.findContact(key); //grabs each contact
+    htmlForContactInfo += "<li id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + "</li>";
+  });
+  contactsList.html(htmlForContactInfo);
+}
+//Add form submission event listener and gather form input
 $(document).ready(function() {
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
     const inputtedFirstName = $("input#new-first-name").val();
     const inputtedLastName = $("input#new-last-name").val();
     const inputtedPhoneNumber = $("input#new-phone-number").val();
+  //Create a new Contact object and add it to AddressBook
     let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
     addressBook.addContact(newContact);
-    console.log(addressBook.contacts);
+    displayContactDetails(addressBook);
   });
 });
