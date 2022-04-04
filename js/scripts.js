@@ -85,6 +85,11 @@ $(document).ready(function() {
     const inputtedFirstName = $("input#new-first-name").val();
     const inputtedLastName = $("input#new-last-name").val();
     const inputtedPhoneNumber = $("input#new-phone-number").val();
+
+    //Empty Form Fields After Submission
+    $("input#new-first-name").val("");
+    $("input#new-last-name").val("");
+    $("input#new-phone-number").val("");
   //Create a new Contact object and add it to AddressBook
     let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
     addressBook.addContact(newContact);
